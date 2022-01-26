@@ -7,7 +7,7 @@ nbviewer generally renders notebooks better than Github.
 
 ### Physics
 
-#### Theoretical Minimum Series
+#### Theoretical Minimum Series (Leonard Susskind)
 
 |  File | Comment   | 
 |-------|-----------|
