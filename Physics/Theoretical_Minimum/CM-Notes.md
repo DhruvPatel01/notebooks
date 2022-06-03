@@ -133,6 +133,21 @@ $$
 
 the Lagrangian can be rewritten as,  $L = m(\dot{x_+}^2 + \dot{x_-}^2 ) + V(x_-)$. Now the momentum conjugate to $x_+$ is conserved. $p_+ = 2m\dot{x_+} = m(\dot{x_1} + \dot{x_2})$, so the total momentum is conserved.
 
+
+If $ L = \frac{m}{2}(\dot{q_1}^2 + \dot{q_2}^2 ) + V(a q_1 - b q_2)$, then
+
+$$
+\begin{align*}
+\dot{p}_1 &= -a V(a q_1 - b q_2) \\
+\dot{p}_2 &=  b V(a q_1 - b q_2) \\
+\end{align*} \text{.}
+$$
+
+Law of conservation of momentum has changed. Instead of conserving $p_1 + p_2$, $bp_1+ap_2$ is conserved. If V was a non linear function of $q_1, q_2$, there wouldn't be law of conservation.
+
+
+## Symmetries
+
 ```python
 
 ```

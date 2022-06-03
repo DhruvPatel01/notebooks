@@ -1,0 +1,262 @@
+---
+jupyter:
+  jupytext:
+    formats: ipynb,md
+    text_representation:
+      extension: .md
+      format_name: markdown
+      format_version: '1.3'
+      jupytext_version: 1.13.4
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+---
+
+<!-- #region tags=[] -->
+# Quantum Mechanics
+
+## Differences from Classical Mechanics
+1. States have different logical structure than CM.
+2. States and measurements are different unlike CM. e.g. Position and Momemntum can be determined by experiments in CM.
+
+## Spins
+Particles have properties attached to it. e.g. mass, electric charge.
+
+Even a specific particle is not completely specified by its position.
+
+Attached to electron is an extra degree of freedom, called spin. Spin is as quantum mechanical as it can and we should not try to visualize it.
+
+## Testing
+
+Propositions: 
+$$
+\begin{align*}
+A &: \sigma_z = +1 \\
+B &: \sigma_x = +1 \\
+\end{align*}
+$$
+
+### Classically,
+
+To test (A or B), one could first **gently** test $\sigma_z$. If it is -1, one would **gently** test $\sigma_x$. The result of doing it otherway (i.e. B or A) will be the same as doing (A or B). The reason is that classically, measurements are gentle. They don't change the state of the system.
+
+### In Quantum Mechanics,
+
+If some entity prepares the spin in $\sigma_z = +1$ state, and we measure `A or B` (whether we use short circuit or not), we will measure it to be true. However, if we measure `B or A`, there is 25% chance that we will measure it to be false.
+
+What about `A and B`? If we conclude that `A and B` is true, can we confirm it again? Answer is no. Since to compute B, we had to measure $\sigma_x$, which ruined measurement of A. Thus we can't confirm it. i.e. experiment is not reproducible.
+<!-- #endregion -->
+
+<!-- #region tags=[] -->
+## Complex Numbers
+<!-- #endregion -->
+
+Two ways to represent them. 
+
+In cartesian coordinates, $z = x + iy$.
+
+In polar coordinates, $z = re^{i\theta}$.
+
+$ x_1 x_2 = (r_1e^{i\theta_1})(r_2e^{i\theta_2}) = r_1 r_2 e^{i(\theta_1 + \theta_2)}$.
+
+$z = x + iy = re^{i\theta}$ 
+
+$z^* = x - iy = re^{-i\theta}$ 
+
+$z^*z = r^2$, i.e. a real number
+
+### Phase Factors
+
+These are complex numbers whose r componenet is 1. Following holds for them,
+
+$$
+\begin{align}
+z^*z &= 1 \\
+z &= e^{i\theta}\\
+z &= \cos\theta + i \sin\theta
+\end{align}
+$$
+
+<!-- #region tags=[] -->
+## Vector Spaces
+<!-- #endregion -->
+
+$$\newcommand{\ket}[1]{\left|{#1}\right\rangle}$$
+$$\newcommand{\bra}[1]{\left\langle{#1}\right|}$$
+$$\newcommand{\braket}[2]{\left\langle{#1}\middle|{#2}\right\rangle}$$
+
+<!-- #region jp-MarkdownHeadingCollapsed=true tags=[] -->
+Vector spaces is familiar concept from abstract linear algebra.
+
+### Complex Conjugate of space V 
+
+For every $\ket{A}$ there exists $\bra{A}$ in conjugate space. This space has following properties.
+
+1. The conjugate of $\ket{A} + \ket{B}$ is $\bra{A}+\bra{B}$.
+2. Conjugate of $z\ket{A}$ is $z^*\bra{A} = \bra{A}z^*$.
+
+In the concrete case where ket space is column vectors, bra space is denoted as row vectors.
+
+i.e. if 
+
+$$
+\begin{align*}
+\ket{A} = \begin{bmatrix}
+\alpha_1 \\
+\alpha_2 \\
+\vdots \\
+\alpha_n
+\end{bmatrix}
+\end{align*}
+$$
+
+then
+$$
+\begin{align*}
+\bra{A} = \begin{bmatrix}
+\alpha_1^* & \alpha_2^* & \dots & \alpha_n^*
+\end{bmatrix}.
+\end{align*}
+$$
+
+<!-- #endregion -->
+
+### Inner Products
+
+
+Inner product is always between bras and kets. It is written like $\braket{B}{A}$. The result is a complex numbers.
+
+#### Axioms of inner product.
+1. Inner product is linear. $\bra{C} + (\ket{A}+\ket{B}) = \braket{C}{A} + \braket{C}{B}$.
+2. $\braket{B}{A} = \braket{A}{B}^*$.
+
+#### Special vectors
+1. Normalized: $\braket{A}{A} = 1$.
+2. Orhthogonal: $\braket{B}{A} = 0$.
+
+
+### Orhtonormal Basis.
+
+Let our space be N dimensional. And let the orthonomal basis denoted by $\ket{i}$.
+
+$$
+\ket{A} = \sum_i \alpha_i \ket{i},
+$$
+
+where, $\alpha_j = \braket{j}{A}$.
+
+
+# States
+
+
+In CM, knowing the state means knowing everything that is necessary to predict the future. 
+
+In QM, knowing the state means knowing as much as can be known about how the system was prepared.
+
+
+Apparatus $\cal{A}$ can be oriented on any axis. If we orient it along z axis, the measured spin will either be +1 or -1. 
+
+$\sigma_z = \pm 1$. We can denote +1 as state $\ket{u}$ and -1 as $\ket{d}$.
+
+Similarly $\sigma_x = \pm 1$, can be denoted by  $\ket{r}$ and -1 as $\ket{l}$. And $\sigma_y = \pm 1$, can be denoted by  $\ket{o}$ and -1 as $\ket{i}$.
+
+If two states are orthogonal than these two states can be determined together. For example, if $\sigma_z$ was prepared to be in $\ket{u}$, for any subsequent measurements probability that $\ket{d}$ is detected is 0. Thus for binary spin, the state space is two dimensional. For now we can take $\ket{u}, \ket{d}$ as the basis vectors.
+
+Then, the generic state $\ket{A} = \alpha_u \ket{u} + \alpha_d \ket{d}$. Where $\alpha_i = \braket{i}{A}$.
+
+The meaning of,
+* $\alpha_u^*\alpha_u$: If the spin was prepared in $\ket{A}$ state, $\alpha_u^*\alpha_u$ is the probability that $\sigma_z = +1$.
+* $\alpha_d^*\alpha_d$: is the probability that $\sigma_z = -1$.
+
+Since probabilities must add to 1, $\alpha_u^*\alpha_u + \alpha_d^*\alpha_d = 1$. It is equivalent to saying that $\ket{A}$ is normalized, i.e. $\braket{A}{A} = 1$.
+
+General principle of quantum systems: the state of a system is represented by a unit (normalized) vector in a vector space of states. Moreover, the squared magnitudes of the components of the state-vector, **along particular basis vectors**, represent probabilities for various experimental outcomes. 
+
+
+### Representing $\ket{r}$ and $\ket{l}$ using above basis vectors
+
+We know that if A initially prepares the state in $\ket{r}$, $\sigma_z = \pm 1$ with equal probability. Hence, $\alpha_u^*\alpha_u =\alpha_d^*\alpha_d = \frac{1}{2}$. One choice is to have $\alpha_u = \alpha_d = \frac{1}{\sqrt{2}}$.
+
+$\ket{r} = \frac{1}{\sqrt{2}} \ket{u} + \frac{1}{\sqrt{2}} \ket{d}$. (There are is still ambiguity, called phase ambiguity.)
+
+To solve for $\ket{l}$ the above process repeats. But, in addition, $\braket{l}{r} = 0$. One choice is $[\frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}}]$. But it is not the only choice. Even for fixed choice for $\ket{r}$, you can multiply above choice by a phase factor ($z = e^{i\theta}$), and still satisfy the two constraints. Later, we will find out that no measurable quantity is sensitive to the overall phase-factor, and therefore we can ignore it when specifying states. 
+
+### Representing $\ket{i}$ and $\ket{o}$ using above basis vectors
+
+To solve for $\ket{i}$ and $\ket{o}$, we need same conditions as we needed above. But we also need additional constrains. For example, if A prepares the state in $ket{i}$,$\sigma_x = \pm1$, with equal probability. Also $\braket{i}{o} = 0$.
+
+The following solution solves for these constraints (up to phase-factor ambiguity).
+
+$\ket{i} = \frac{1}{\sqrt{2}} \ket{u} + \frac{i}{\sqrt{2}} \ket{d}$.
+
+$\ket{o} = \frac{1}{\sqrt{2}} \ket{u} - \frac{i}{\sqrt{2}} \ket{d}$.
+
+
+
+With the previous discussion, the vectors can be represented in column format as below.
+
+$$
+\begin{align*}
+\ket{u} &= \begin{bmatrix} 1 \\ 0 \end{bmatrix}, \ket{d} = \begin{bmatrix} 0 \\ 1 \end{bmatrix} \\
+\end{align*}
+$$
+
+
+### Matricies
+
+Axiom: Physical observables are described by linear operators.
+
+observables are the things that we can measure. e.g. coordinates of a particle; the energy, momentum, or angular momentum of a system; or the electric field at a point in space.
+
+$$
+\begin{align*}
+M \ket{A} &= \ket{B} \\
+M \sum_j \alpha_j \ket{j} &= \sum_j \beta_j \ket{j} \\
+\sum_j \alpha_j M\ket{j} &= \sum_j \beta_j \ket{j} <\text{assuming M is linear}> \\
+\sum_j \alpha_j \bra{k} M \ket{j} &= \sum_j \beta_j \braket{k}{j} <\text{multiply both sides by} \bra{k}> \\
+\sum_j \alpha_j m_{kj} &= \beta_k\\
+\end{align*}
+$$
+
+Note that each $m_{kj}$ is a complex number. We can think of M in terms of matrix (defined by a choice of basis vectors).
+
+#### Eigenvectors and Eigenvalues
+
+$M \ket{\lambda} = \lambda \ket{\lambda}$. $\lambda$ is an eigenvalue, and $\ket{\lambda}$ is an eigenvector.
+
+#### Linear operators on bra vectors
+
+$$ 
+\begin{align*}
+B^* &= \begin{bmatrix} b_1^* & b_2^* & b_3^*\end{bmatrix} \\
+M &= \begin{bmatrix}
+m_{11} & m_{12} & m_{13} \\
+m_{21} & m_{22} & m_{23} \\
+m_{31} & m_{32} & m_{33} \\
+\end{bmatrix}
+\end{align*}
+$$
+
+Than $\bra{B} M$ is just row vector multiplied by matrix M.
+
+#### Hermitian Conjugate
+$$
+\begin{align*}
+M^\dagger &= (M^T)^* \\
+M \ket{A} &= \ket{B} \\
+\bra{A} M^\dagger &= \bra{B} \\
+\end{align*}
+$$
+
+#### Hermitian Operators
+- Observables quantities in classcial mechanics are real numbers. i.e. they are their own complex conjugate.
+- Observables in quantum mechanics (i.e. linear operators) are also their own complex conjugates. Such operators are called Hermitian Operators. $M^\dagger = M$.
+
+##### Properties of Hermitian Operators
+- Their eigenvalues are real.
+- Their eigenvectors form an orthonormal basis. (i.e. their eigenvectors are orthonormal and they form a basis)
+
+```python
+
+```
