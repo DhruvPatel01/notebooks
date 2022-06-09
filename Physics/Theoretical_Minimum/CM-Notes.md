@@ -145,9 +145,77 @@ $$
 
 Law of conservation of momentum has changed. Instead of conserving $p_1 + p_2$, $bp_1+ap_2$ is conserved. If V was a non linear function of $q_1, q_2$, there wouldn't be law of conservation.
 
-
+<!-- #region tags=[] -->
 ## Symmetries
+<!-- #endregion -->
 
-```python
+<!-- #region tags=[] -->
 
-```
+
+$q_i' = q_i'(q_i)$. We are moving the whole system to the new location. This change changes the system. For example, potential energy(so the Lagrangian) may change.
+
+Symmetry is the coordinate transformation that does not change the value of the Lagrangian.
+
+### Examples
+
+$L = \frac{1}{2} \dot{q}^2$. And the transformation $ q \rightarrow q + \delta$. Here the $\dot{q}$ does not change, so L also doesn't change.
+
+If the Lagrangian had a potential ($V(q)$) term in it, unless the potential is a constant independent of q, change in q changes the potential. In that case there is no symmetry.
+
+#### Example Sym.1
+If, potential was a function $V(q_1 - q_2)$, then under the transformation
+$$
+\begin{align*}
+q_1 &\rightarrow q_1 + \delta \\
+q_2 &\rightarrow q_2 + \delta 
+\end{align*}
+$$ 
+L is symmetric.
+
+#### Example Sym.2
+If, potential was a function $V(aq_1 + bq_2)$, then under the transformation
+$$
+\begin{align*}
+q_1 &\rightarrow q_1 + b\delta \\
+q_2 &\rightarrow q_2 - a\delta 
+\end{align*}
+$$ 
+L is symmetric.
+
+#### Example Sym.3
+If, $ L = \frac{1}{2} (\dot{x}^2 + \det{y}^2) + V(x^2 + y^2)$, then there is rotational symmetry. That is, rotating the point around origin by angle $\theta$ does not change the lagrangian.
+
+$$
+\begin{align*}
+x &\rightarrow x cos\theta + y sin\theta \\
+y &\rightarrow -x sin\theta + y cos\theta
+\end{align*}
+$$ 
+
+For small angle $\delta$, $sin\delta = \delta$ and $cos\delta = 1$.
+$$
+\begin{align*}
+x &\rightarrow x + y \delta \\
+y \rightarrow -x \delta + y &= y - x\delta
+\end{align*}
+$$ 
+Plugging this into the lagrangian, we can see that (in the first order of $\delta$) lagrangian does not change.
+<!-- #endregion -->
+
+<!-- #region tags=[] -->
+### General notion of symmetry
+
+In general, the shift is parameterized by infinitesimal $\delta$ and is given by $\delta q_i = f_i(q) \delta$.
+
+|example | $f_1$ | $f_2$|
+|--|--|--|
+|Sym.1 | 1 | 1 |
+|Sym.2 | b | -a |
+|Sym.3 | y | -x |
+
+Change in velocity then is given by $\delta \dot{q_i} = \frac{d}{dt} \delta q_i$.
+
+A  continuous  symmetry  is  an  infinitesimal transformation  of  the  coordinates  for  which  the  change  in  the Lagrangian  is  zero.
+<!-- #endregion -->
+
+
