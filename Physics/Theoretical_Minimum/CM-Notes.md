@@ -183,7 +183,7 @@ $$
 L is symmetric.
 
 #### Example Sym.3
-If, $ L = \frac{1}{2} (\dot{x}^2 + \det{y}^2) + V(x^2 + y^2)$, then there is rotational symmetry. That is, rotating the point around origin by angle $\theta$ does not change the lagrangian.
+If, $ L = \frac{1}{2} (\dot{x}^2 + \dot{y}^2) + V(x^2 + y^2)$, then there is rotational symmetry. That is, rotating the point around origin by angle $\theta$ does not change the lagrangian.
 
 $$
 \begin{align*}
@@ -219,3 +219,25 @@ A  continuous  symmetry  is  an  infinitesimal transformation  of  the  coordina
 <!-- #endregion -->
 
 
+If we assume that system evolves along a trajectory that satisfies Euler-Lagrangian equations, we can prove that symmetry implies $\cal{Q}$ is conserved. Where $\cal{Q} = \sum_i p_i f_i(q)$.
+
+Applying this to **Sym.3**, we see that $l = p_x y - p_y x$, aka angular momentum, is conserved.
+
+
+## Time translation invariance
+
+A system  is time-translation  invariant  if  there  is  no  explicit  time  dependence  in  its Lagrangian. 
+
+e.g. harmonic motion due to spring $L(x, \dot{x}) = \frac{1}{2} (m \dot{x}^2 - k x^2)$. Here neither the mass m, nor the sprint constant k depend on the time. 
+
+If spring constant changes with time i.e. k(t), there would be no time translation invariance.
+
+Now if $L = L(q_i, \dot{q}_i, t)$, 
+
+$$
+\frac{dL}{dt} = \sum_i \left( \frac{\partial{L}}{\partial{q_i}} \dot{q}_i + \frac{\partial{L}}{\partial{\dot{q}_i}} \ddot{q}_i \right) + \frac{\partial{L}}{\partial{t}}
+$$
+
+```python
+
+```

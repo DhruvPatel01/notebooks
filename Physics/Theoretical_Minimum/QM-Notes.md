@@ -257,6 +257,15 @@ $$
 - Their eigenvalues are real.
 - Their eigenvectors form an orthonormal basis. (i.e. their eigenvectors are orthonormal and they form a basis)
 
+
+## Principles
+1. The observable or measurable quantities of QM are represented by a linear operator L. 
+2. The possible readings of the measurements are eigenvalues $\lambda_i$. The state for which reading is **unambiguously** $\lambda_i$ is the corresponding eigenvector $\ket{\lambda_i}$.
+3. Unambiguously distinguishable states are represented by orthogonal vectors. e.g. $\braket{u}{d} = 0$.
+4. If $\ket{A}$ is the state vector of the system, and the observable L is measured, the probability of observing $\lambda_i$ is given by $\braket{A}{\lambda_i}\braket{\lambda_i}{A}$.
+
+Since the readings (i.e. eigenvalues) are real and eigenvectors are orthogonal, the operator L must be hermitian.
+
 ```python
 
 ```
