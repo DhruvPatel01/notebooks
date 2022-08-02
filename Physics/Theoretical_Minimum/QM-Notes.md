@@ -266,6 +266,48 @@ $$
 
 Since the readings (i.e. eigenvalues) are real and eigenvectors are orthogonal, the operator L must be hermitian.
 
+
+### 3-Vector Operator $\sigma$
+
+- Just as a spin-measuring apparatus can only answer questions about a spin's orientation in a specific direction, a spin operator can only provide information about the spin component in a specific direction. 
+- To physically measure spin in a different direction, we need to rotate the apparatus to point in the new direction. The same idea applies to the spin operator—if we want it to tell us about the spin component in a new direction, it too must be "rotated" but this kind of rotation is accomplished mathematically.
+
+### Operator Matrices
+Using above four principles, and solving linear equations, we can derive them.
+
+$$
+\sigma_z = \begin{bmatrix}
+1 & 0 \\
+0 & -1 
+\end{bmatrix}, \sigma_x = \begin{bmatrix}
+0 & 1 \\
+1 & 0 
+\end{bmatrix}, \sigma_y = \begin{bmatrix}
+0 & -i \\
+i & 0 
+\end{bmatrix} \text{.}
+$$
+
+These along with Identity matrix are called Pauli Matrices.
+
+IMPORTANT: Applying the operator L to state $\ket{A}$ does not change the state to $L\ket{A}$. $L\ket{A}$ is actually a supuerposition and tells us the probabilities of basis states. When we actually measure using L, the system is changed to one of the eignestates unambiguously.
+
+There is nothing special about these three operators. We can take any direction $\hat{n} = (n_x, n_y, n_z)$, orient the apparatus A along $\hat n$, activate A, and measure the component of the spin along $\hat n$. That means there has to be an operator that represents this operation. Indeed, this operator is given by $\sigma_n = \sigma \cdot \hat n$, where $\sigma = (\sigma_x, \sigma_y, \sigma_z)$.
+
+$$
+\sigma_n = \begin{bmatrix}
+n_z & (n_x - i n_y) \\
+(n_x + i n_y) & -n_z
+\end{bmatrix}
+$$
+
+
+### Spin-Polarization Principle
+
+For any state $\ket{A} = \alpha_u \ket{u} + \alpha_d \ket{d}$, there exists some direction $\hat n$ such that $\sigma \cdot \hat n = \ket{A}$.
+
+States of the spins are characterized by a polarization vector, and along the polarization vector the component of the spin is predictably +1.
+
 ```python
 
 ```
