@@ -62,9 +62,9 @@ $ x_1 x_2 = (r_1e^{i\theta_1})(r_2e^{i\theta_2}) = r_1 r_2 e^{i(\theta_1 + \thet
 
 $z = x + iy = re^{i\theta}$ 
 
-$z^* = x - iy = re^{-i\theta}$ 
+$z^\ast = x - iy = re^{-i\theta}$ 
 
-$z^*z = r^2$, i.e. a real number
+$z^\ast z = r^2$, i.e. a real number
 
 ### Phase Factors
 
@@ -72,19 +72,20 @@ These are complex numbers whose r componenet is 1. Following holds for them,
 
 $$
 \begin{align}
-z^*z &= 1 \\
+z^\ast z &= 1 \\
 z &= e^{i\theta}\\
 z &= \cos\theta + i \sin\theta
 \end{align}
 $$
 
+
+$$\renewcommand{\bra}[1]{\left\langle{#1}\right|}$$
+$$\renewcommand{\ket}[1]{\left|{#1}\right\rangle}$$
+$$\renewcommand{\braket}[1]{\left\langle{#1}\right\rangle}$$
+
 <!-- #region tags=[] -->
 ## Vector Spaces
 <!-- #endregion -->
-
-$$\newcommand{\ket}[1]{\left|{#1}\right\rangle}$$
-$$\newcommand{\bra}[1]{\left\langle{#1}\right|}$$
-$$\newcommand{\braket}[2]{\left\langle{#1}\middle|{#2}\right\rangle}$$
 
 <!-- #region jp-MarkdownHeadingCollapsed=true tags=[] -->
 Vector spaces is familiar concept from abstract linear algebra.
@@ -94,7 +95,7 @@ Vector spaces is familiar concept from abstract linear algebra.
 For every $\ket{A}$ there exists $\bra{A}$ in conjugate space. This space has following properties.
 
 1. The conjugate of $\ket{A} + \ket{B}$ is $\bra{A}+\bra{B}$.
-2. Conjugate of $z\ket{A}$ is $z^*\bra{A} = \bra{A}z^*$.
+2. Conjugate of $z\ket{A}$ is $z^\ast \bra{A} = \bra{A}z^\ast $.
 
 In the concrete case where ket space is column vectors, bra space is denoted as row vectors.
 
@@ -115,7 +116,7 @@ then
 $$
 \begin{align*}
 \bra{A} = \begin{bmatrix}
-\alpha_1^* & \alpha_2^* & \dots & \alpha_n^*
+\alpha_1^\ast  & \alpha_2^\ast  & \dots & \alpha_n^\ast 
 \end{bmatrix}.
 \end{align*}
 $$
@@ -125,15 +126,15 @@ $$
 ### Inner Products
 
 
-Inner product is always between bras and kets. It is written like $\braket{B}{A}$. The result is a complex numbers.
+Inner product is always between bras and kets. It is written like $\braket{B|A}$. The result is a complex numbers.
 
 #### Axioms of inner product.
-1. Inner product is linear. $\bra{C} + (\ket{A}+\ket{B}) = \braket{C}{A} + \braket{C}{B}$.
-2. $\braket{B}{A} = \braket{A}{B}^*$.
+1. Inner product is linear. $\bra{C} + (\ket{A}+\ket{B}) = \braket{C|A} + \braket{C|B}$.
+2. $\braket{B|A} = \braket{A|B}^\ast $.
 
 #### Special vectors
-1. Normalized: $\braket{A}{A} = 1$.
-2. Orhthogonal: $\braket{B}{A} = 0$.
+1. Normalized: $\braket{A|A} = 1$.
+2. Orhthogonal: $\braket{B|A} = 0$.
 
 
 ### Orhtonormal Basis.
@@ -144,7 +145,7 @@ $$
 \ket{A} = \sum_i \alpha_i \ket{i},
 $$
 
-where, $\alpha_j = \braket{j}{A}$.
+where, $\alpha_j = \braket{j|A}$. (To derive this, multiply both sides by $\bra{j}$.
 
 
 # States
@@ -163,28 +164,28 @@ Similarly $\sigma_x = \pm 1$, can be denoted by  $\ket{r}$ and -1 as $\ket{l}$. 
 
 If two states are orthogonal than these two states can be determined together. For example, if $\sigma_z$ was prepared to be in $\ket{u}$, for any subsequent measurements probability that $\ket{d}$ is detected is 0. Thus for binary spin, the state space is two dimensional. For now we can take $\ket{u}, \ket{d}$ as the basis vectors.
 
-Then, the generic state $\ket{A} = \alpha_u \ket{u} + \alpha_d \ket{d}$. Where $\alpha_i = \braket{i}{A}$.
+Then, the generic state $\ket{A} = \alpha_u \ket{u} + \alpha_d \ket{d}$. Where $\alpha_i = \braket{i|A}$.
 
 The meaning of,
-* $\alpha_u^*\alpha_u$: If the spin was prepared in $\ket{A}$ state, $\alpha_u^*\alpha_u$ is the probability that $\sigma_z = +1$.
-* $\alpha_d^*\alpha_d$: is the probability that $\sigma_z = -1$.
+- $\alpha_u^\ast \alpha_u$: If the spin was prepared in $\ket{A}$ state, $\alpha_u^\ast \alpha_u$ is the probability that $\sigma_z = +1$.
+- $\alpha_d^\ast \alpha_d$: is the probability that $\sigma_z = -1$.
 
-Since probabilities must add to 1, $\alpha_u^*\alpha_u + \alpha_d^*\alpha_d = 1$. It is equivalent to saying that $\ket{A}$ is normalized, i.e. $\braket{A}{A} = 1$.
+Since probabilities must add to 1, $\alpha_u^\ast \alpha_u + \alpha_d^\ast \alpha_d = 1$. It is equivalent to saying that $\ket{A}$ is normalized, i.e. $\braket{A|A} = 1$.
 
 General principle of quantum systems: the state of a system is represented by a unit (normalized) vector in a vector space of states. Moreover, the squared magnitudes of the components of the state-vector, **along particular basis vectors**, represent probabilities for various experimental outcomes. 
 
 
 ### Representing $\ket{r}$ and $\ket{l}$ using above basis vectors
 
-We know that if A initially prepares the state in $\ket{r}$, $\sigma_z = \pm 1$ with equal probability. Hence, $\alpha_u^*\alpha_u =\alpha_d^*\alpha_d = \frac{1}{2}$. One choice is to have $\alpha_u = \alpha_d = \frac{1}{\sqrt{2}}$.
+We know that if A initially prepares the state in $\ket{r}$, $\sigma_z = \pm 1$ with equal probability. Hence, $\alpha_u^\ast \alpha_u =\alpha_d^\ast \alpha_d = \frac{1}{2}$. One choice is to have $\alpha_u = \alpha_d = \frac{1}{\sqrt{2}}$.
 
 $\ket{r} = \frac{1}{\sqrt{2}} \ket{u} + \frac{1}{\sqrt{2}} \ket{d}$. (There are is still ambiguity, called phase ambiguity.)
 
-To solve for $\ket{l}$ the above process repeats. But, in addition, $\braket{l}{r} = 0$. One choice is $[\frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}}]$. But it is not the only choice. Even for fixed choice for $\ket{r}$, you can multiply above choice by a phase factor ($z = e^{i\theta}$), and still satisfy the two constraints. Later, we will find out that no measurable quantity is sensitive to the overall phase-factor, and therefore we can ignore it when specifying states. 
+To solve for $\ket{l}$ the above process repeats. But, in addition, $\braket{l|r} = 0$. One choice is $[\frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}}]$. But it is not the only choice. Even for fixed choice for $\ket{r}$, you can multiply above choice by a phase factor ($z = e^{i\theta}$), and still satisfy the two constraints. Later, we will find out that no measurable quantity is sensitive to the overall phase-factor, and therefore we can ignore it when specifying states. 
 
 ### Representing $\ket{i}$ and $\ket{o}$ using above basis vectors
 
-To solve for $\ket{i}$ and $\ket{o}$, we need same conditions as we needed above. But we also need additional constrains. For example, if A prepares the state in $ket{i}$,$\sigma_x = \pm1$, with equal probability. Also $\braket{i}{o} = 0$.
+To solve for $\ket{i}$ and $\ket{o}$, we need same conditions as we needed above. But we also need additional constrains. For example, if A prepares the state in $\ket{i}$,$\sigma_x = \pm1$, with equal probability. Also $\braket{i|o} = 0$.
 
 The following solution solves for these constraints (up to phase-factor ambiguity).
 
@@ -202,19 +203,28 @@ $$
 \end{align*}
 $$
 
-
+<!-- #region -->
 ### Matricies
+
+If we have a basis $\ket{i}$, a vector $\ket{A}$ can be rewritten as,
+
+$$ \ket{A} = \sum_i \alpha_i \ket{i} = \sum_i \ket{i} \braket{i|A} $$.
+
+Similarly,
+$$ \bra{A} = \sum_i \braket{A|i}\bra{i}  $$.
+
+
 
 Axiom: Physical observables are described by linear operators.
 
-observables are the things that we can measure. e.g. coordinates of a particle; the energy, momentum, or angular momentum of a system; or the electric field at a point in space.
+Observables are the things that we can measure. e.g., coordinates of a particle; the energy, momentum, or angular momentum of a system; or the electric field at a point in space.
 
 $$
 \begin{align*}
 M \ket{A} &= \ket{B} \\
 M \sum_j \alpha_j \ket{j} &= \sum_j \beta_j \ket{j} \\
-\sum_j \alpha_j M\ket{j} &= \sum_j \beta_j \ket{j} <\text{assuming M is linear}> \\
-\sum_j \alpha_j \bra{k} M \ket{j} &= \sum_j \beta_j \braket{k}{j} <\text{multiply both sides by} \bra{k}> \\
+\sum_j \alpha_j M\ket{j} &= \sum_j \beta_j \ket{j} \text{;;assuming M is linear} \\
+\sum_j \alpha_j \bra{k} M \ket{j} &= \sum_j \beta_j \braket{k|j} \text{;;multiply both sides by} \bra{k} \\
 \sum_j \alpha_j m_{kj} &= \beta_k\\
 \end{align*}
 $$
@@ -229,7 +239,7 @@ $M \ket{\lambda} = \lambda \ket{\lambda}$. $\lambda$ is an eigenvalue, and $\ket
 
 $$ 
 \begin{align*}
-B^* &= \begin{bmatrix} b_1^* & b_2^* & b_3^*\end{bmatrix} \\
+\bra{B}  &= \begin{bmatrix} b_1^\ast  & b_2^\ast  & b_3^\ast \end{bmatrix} \\
 M &= \begin{bmatrix}
 m_{11} & m_{12} & m_{13} \\
 m_{21} & m_{22} & m_{23} \\
@@ -243,7 +253,7 @@ Than $\bra{B} M$ is just row vector multiplied by matrix M.
 #### Hermitian Conjugate
 $$
 \begin{align*}
-M^\dagger &= (M^T)^* \\
+M^\dagger &= (M^T)^\ast  \\
 M \ket{A} &= \ket{B} \\
 \bra{A} M^\dagger &= \bra{B} \\
 \end{align*}
@@ -256,15 +266,18 @@ $$
 ##### Properties of Hermitian Operators
 - Their eigenvalues are real.
 - Their eigenvectors form an orthonormal basis. (i.e. their eigenvectors are orthonormal and they form a basis)
-
+<!-- #endregion -->
 
 ## Principles
 1. The observable or measurable quantities of QM are represented by a linear operator L. 
 2. The possible readings of the measurements are eigenvalues $\lambda_i$. The state for which reading is **unambiguously** $\lambda_i$ is the corresponding eigenvector $\ket{\lambda_i}$.
-3. Unambiguously distinguishable states are represented by orthogonal vectors. e.g. $\braket{u}{d} = 0$.
-4. If $\ket{A}$ is the state vector of the system, and the observable L is measured, the probability of observing $\lambda_i$ is given by $\braket{A}{\lambda_i}\braket{\lambda_i}{A}$.
+3. Unambiguously distinguishable states are represented by orthogonal vectors. e.g. $\braket{u|d} = 0$.
+4. If $\ket{A}$ is the state vector of the system, and the observable L is measured, the probability of observing $\lambda_i$ is given by $\braket{A|\lambda_i}\braket{\lambda_i|A}$.
 
-Since the readings (i.e. eigenvalues) are real and eigenvectors are orthogonal, the operator L must be hermitian.
+Since the readings (i.e., eigenvalues) are real and eigenvectors are orthogonal, the operator L must be hermitian.
+
+P1 says that $\sigma_x, \sigma_y, \text{and} \sigma_z$ are identified with a specific linear operator in 2D space of states describing the states.
+P2 says that the actual measurments can take discrete values. E.g., energy of atom will be one of the established energy levels of the atom.
 
 
 ### 3-Vector Operator $\sigma$
@@ -307,6 +320,124 @@ $$
 For any state $\ket{A} = \alpha_u \ket{u} + \alpha_d \ket{d}$, there exists some direction $\hat n$ such that $\sigma \cdot \hat n = \ket{A}$.
 
 States of the spins are characterized by a polarization vector, and along the polarization vector the component of the spin is predictably +1.
+
+
+
+
+
+### Time Development Operator
+
+
+Let the closed system be in state $\ket{\Psi(t)}$. Thus, state can be different at different times. 
+
+The time development operator $U(t)$ tells us how the system evolves with time.
+
+$$\ket{\Psi(t)} = U(t) \ket{\Psi(0)}$$.
+
+Thus, the time evolution of the state is deterministic.
+
+Quantum mechanics assumes,
+1. that U(t) is a linear operator.
+2. If two states are orthonormal, they remain orthonormal in the evolution. i.e., $\braket{\Psi(0)|\Phi(0)} =0 \implies \braket{\Psi(t)|\Phi(t)} = 0$.
+
+As a consequence of these two assumptions, it is easy to prove that $U(t)^{\dagger}U(t) = I$. Such operator is called unitary operator.
+
+Principle 5: Time evolution of state vectors is unitary.
+
+Unitarity also implies that as time evolves, the overlap (inner product) between two states remains the same.
+
+Quantum Mechanics also assumes that time evolution is continuous.
+
+Thus, for small time $\epsilon, U(\epsilon) = I - i \epsilon H$. Using the unitarity condition  $U(t)^{\dagger}U(t) = I$, we can show that $H^{\dagger} = H$.
+
+Thus, H is hermitian. i.e., it is an obeservable, and has complete set of orthonormal eigenvectors.
+
+We will see that, the eigenvalues of H are the values that result from measuring the energy levels of the quantum system. Thus, it has resemblance to the hamiltonian from the classical mechanics.
+
+Using the continuity assumption inside $\ket{\Psi(t)} = U(t) \ket{\Psi(0)}$, we can derive, 
+
+$$ \frac{d \ket{\Psi}}{dt} = -iH\ket{\Psi}$$.
+
+This equation is known as Generalized Schrodinger equation or time-dependent schrodinger's equation. If we know the Hamiltonian of the system, we can know how the state of the undisturbed system evolves with the time.
+
+#### Plank's constant
+h = 6.6 * 1e-34 kgm^2/s1.
+
+$\hbar = \frac{h}{2\pi} = 1.054571726 \dots x 10^{-34} \frac{kgm^2}{s}$ 
+
+In the gen. schrodinger's eqn, lhs has units of 1/time, whereas rhs has units of energy (kgm^2/s^2, because H is hamiltonian). This is wrong. However multiplying lhs by Plank's constant, units are proper. Thus, the correct Generalized schrodinger's equation is $$ \hbar \frac{d \ket{\Psi}}{dt} = -iH\ket{\Psi}$$.
+
+
+
+#### Expectation
+If L is an observable, the expectation is defined as $\braket{L} = \sum_i P(\lambda_i) \lambda_i$.
+
+When state of the system is $\ket{A} = \sum_i \alpha_i \lambda_i$, the expecation can be computed as $\braket{L} = \sum_i \alpha_i^\ast \alpha_i \lambda_i = \braket{A|L|A}$.
+
+Try to apply this for state $\ket{r}$ and observable =$\sigma_z$. The arithmetic should result in value 0.
+
+#### Effect of the phase factor.
+
+We can multiply the state vectors by a phase factor $e^{i\theta}$ for any $\theta$. This does no make any difference. Although, probability amplitude will change i.e., $\alpha_i \to e^{i\theta} \alpha_i$, the probability does not change, i.e., $\alpha_i^\ast \alpha_i$ remains unchanged. Similarly, the expectation of the observable does not change.
+
+
+#### Change in the expectation
+
+$\frac{d \braket{\Psi(t)|L|\Psi(t)}}{dt} = \braket{\dot\Psi(t)|L|\Psi(t)} + \braket{\Psi(t)|L|\dot\Psi(t)}$. Using generalized schrodinger's equations, 
+
+$\frac{d \braket{\Psi(t)|L|\Psi(t)}}{dt} = \frac{i}{\hbar} \braket{\Psi(t)|HL - LH|\Psi(t)}$.
+
+Linear operators don't commute, so HL != LH.
+
+**Commutator**: Given two operators L, and M, LM - ML is called the commutator of L with M, and is denoted by [L, M]. Note that [L, M] = -[M, L].
+
+Thus, $\frac{d}{dt} \braket{L} = \frac{-i}{\hbar} \braket{[L, H]}$.
+
+It is easy to prove that $i[L, H]$ is also Hermitian. Thus, a valid observable.
+
+This has resemblance to classical mechanics. $\dot{F} = \{F, H\}$.
+
+
+### Conservation in quantum mechanics
+
+To say that an observable Q is conserved is to say that expected value $\braket{Q}$ does not change with time. A stronger condition is that any moment $\braket{Q^m}$ does not change with time.
+
+$\braket{Q}$ does not change ammounts to $[Q, H] = 0$. That is Q commutes with H. Using the properties of commutator, it is easy to prove that $[Q^m, H] = 0$ for any $m \ge 1$.
+
+It turns out that if $[Q, H] = 0$ then for **any** function of Q, $[f(Q), H] = 0$.
+
+H is also conserved, as $[H, H] = 0$. H is defined to be the energy of the quantum system.
+
+
+### Solving Schrodinger's equation
+
+Time dependent Schrodinger's equation is $ \hbar \frac{d \ket{\Psi}}{dt} = -iH\ket{\Psi}$. 
+
+Since H represents enrgy, the oberservable values of energy are eigenvalues of H. Call them $\ket{E_j}$ and $E_j$.
+
+$$
+    H \ket{E_j} = E_j \ket{E_j}
+$$
+
+These are call time-independent schrodinger's equations.
+
+We can write $\ket{\Psi{(t)}} = \sum_j \alpha_j(t) \ket{E_j}$.
+
+Thus, $\ket{\dot\Psi{(t)}} = \sum_j \dot\alpha_j(t) \ket{E_j}$.
+
+Using time-dependent Schrodinger's equation, we can solve for $\dot\alpha_j(t)$. It has the form $\dot\alpha_j(t) = -\frac{i}{\hbar}E_j \alpha_j(t)$. Which has the solution $\alpha_j(t) = \alpha_j(0) e^{\frac{-i}{\hbar} E_j t}$.
+
+But, $\alpha_j(0) = \braket{E_j|\Psi(0)}$.
+
+So, $\Psi(t) = \sum_j \ket{E_j}\braket{E_j|\Psi(0)} e^{-\frac{i}{\hbar}E_j t}$.
+
+#### General Recipe
+
+1. Get the H somehow.
+2. Find the $\ket{E_j}$ and $E_j$.
+3. Prepare the system in initial state $\Psi(0)$.
+4. Use above solution to find the state at any later time.
+5. If you have some other operator L, you can "predict" the outcome of measuring future state using the eigenvectors of L. i.e., the probability the outcome of measuring L is $\lambda_i$ is precisely $|\braket{\lambda_i|\Psi(t)}|^2$.
 
 ```python
 

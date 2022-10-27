@@ -248,7 +248,7 @@ $$\frac{dH}{dt} = -\frac{\partial{L}}{\partial{t}} \text{.}$$
 
 Conclusion: H changes only if L has **explicit** time dependence. In other words, if the system is time-translaction invariant then quantity H is conserved.
 
-H is called Hamilonian, and is an energy of the system.
+H is called Hamiltonian, and is an energy of the system.
 
 
 ### Example: Motion of a particle in a potential
@@ -267,7 +267,7 @@ There are systems for which the Lagrangian has a more intricate form than just T
 
 General Definition of Energy: Energy equals Hamiltonian.
 
-<!-- #region -->
+<!-- #region tags=[] -->
 In Lagrangian formulation, the focus is on the trajectory in the configuration space. here, the equations are second order. So knowing just the $q_i$s is not enough. We also need initial velocities.
 
 In Hamiltonian formulation, the focus in on the trajectory in the phase space. 
@@ -283,7 +283,7 @@ $$
 
 Using $f = ma$ we can rewrite the above equations as 
 $$
-\dot{p} = \frac{\partial H}{\partial x} 
+\dot{p} = -\frac{\partial H}{\partial x} 
 $$
 
 Thus we have two equations,
@@ -305,7 +305,7 @@ H &= H(q_i, p_i) \\
 \end{align*}
 $$
 
-So we see that for each direction in phase space, there is a single first-order equation. 
+So we see that for each direction in phase space, there is a single first-order equation. If we know initial $p, q$, using above equations we can predict the future.
 <!-- #endregion -->
 
 <!-- #region tags=[] -->
@@ -322,7 +322,7 @@ $$
 L = \frac{\dot{q}^2}{2\omega} - \frac{\omega q^2}{2}
 $$
 
-The conjugate momentum $p = \frac{\partial L}{\partial \dot{q}} = \frac{\dot{q}}{\omega}$. This gives us $H = \frac{\omega}{2} (p^2 + q^2)$.
+The conjugate momentum $p = \frac{\partial L}{\partial \dot{q}} = \frac{\dot{q}}{\omega}$. This gives us $H = \frac{\omega}{2} (p^2 + q^2)$. (Exercise. Recall: $H = \sum_i p_i \dot{q}_i - L$.)
 
 From that,
 
@@ -336,6 +336,96 @@ $$
 Thus Hamiltonian formulation gives us two first order equations.
 
 Solving Euler-Lagrangian equation, on the other hand gives us single second order equation. $\ddot{q} = \omega \dot{p}$. These two are equivalent, and can be seen by substituting the first equation in the time derivative of the second equation of the Hamiltonian.
+
+Notice that because of constant energy, in the phase space the particle moves along a circle of fixed radius.
+
+
+![image.png](attachment:767ea6b5-3f7f-4b7f-9d23-a82fe7abc155.png)
+
+
+## Phase Space Fluid
+
+One can imagine a trajectory starting with arbitrary point `(p, q)` in the phase following the hamiltonian equations.
+
+$$
+\begin{align*} 
+\dot{p_i} &= -\frac{\partial H}{\partial q_i} \\
+\dot{q_i} &= \frac{\partial H}{\partial p}
+\end{align*}
+$$
+
+We can imagine the phase space made of infinite points. This can be seen as a fluid in a phase space. The fluid moves using hamiltonian equations.
+
+This flow has certain features.
+
+1. If a point starts at given energy H(q, p), it remains with the same value of energy.
+The surfaces of the energy are defined by $H(q, p) = E$. For each value of E, we have a surface.
+
+
+In ordinary 3-d space, a flow can be described as a velocity field $\vec{v}(x, y, z)$. For each point, it defines a velocity at that point. This can also be a function of time. 
+
+![image.png](attachment:beee651f-3d52-42fb-95fb-028ec81d6cf7.png)
+
+
+Incompressible fluid 
+: a given amount of the fluid always occupies the same volume. It also means that the density of the fluid—the number of  molecules  per  unit  volume—is  uniform  and  stays  that  way forever.
+
+<!-- #region -->
+Divergence of the vector field $\vec{v(t)}$, is defined to be,
+
+$$
+\nabla \cdot \vec{v} = \left( \frac{\partial{v_x}}{\partial{x}} + \frac{\partial{v_y}}{\partial{y}} + \frac{\partial{v_z}}{\partial{z}} \right)
+$$
+
+
+So in the small cube, if velocity along all three axis remains constant, divergence is zero. Incompressible fluid will have zero divergence.
+
+But, is the flow through phase space incompressible? **Liouville's Theorem** says that yes, if the system satisfies Hamilton's equations.
+<!-- #endregion -->
+
+Example: $H = pq$
+
+$$
+\begin{align*}
+\dot{q} &= q \\
+\dot{p} &= -p 
+\end{align*}
+$$
+
+The flow decreases exponentially in p axis, and increases exponentially in q axis. The blob changes the shape extremely, but volume remains constant.
+
+Lioville's theorem in quantum mechanics is replaced by unitarity.
+
+
+## Poisson Brackets
+
+
+Let $F(q, p)$ be the generic function of q's and p's. E.g., it could be potential energy, kinetic energy, angular momentum, etc.
+
+As we follow a point in a phase space, we get a trajectory of F. i.e., F is a function of time.
+
+$$
+\begin{align}
+\dot{F} &= \sum_{i} \left( \frac{\partial F}{\partial q_i} \dot{q_i} +  \frac{\partial F}{\partial p_i} \dot{p_i} \right) \\
+\dot{F} &= \sum_{i} \left( \frac{\partial F}{\partial q_i} \frac{\partial H}{\partial p_i} -
+                           \frac{\partial F}{\partial p_i} \frac{\partial H}{\partial q_i} \right)
+\end{align}
+$$
+
+For **any** two functions F, and G in a phase space, Poisson Bracket is defined as, 
+$$
+\{F, G\} = \sum_{i} \left( \frac{\partial F}{\partial q_i} \frac{\partial G}{\partial p_i} -
+                         \frac{\partial F}{\partial p_i} \frac{\partial G}{\partial q_i} \right)
+$$
+
+Thus, $\dot{F}$ could be rewritten as $\{F, H\}$.
+
+The time derivative of **anything** is a poisson bracket of itself with the Hamiltonian.
+
+- $\dot{q_k} = \{q_k, H\} = \frac{\partial H}{\partial p}$. (Simple application of the notation.)
+- $\dot{p_k} = \{p_k, H\} = -\frac{\partial H}{\partial q}$. (Simple application of the notation.)
+
+Thus, Poisson bracket gives Hamilton's equations back.
 
 ```python
 
