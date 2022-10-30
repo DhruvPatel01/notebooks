@@ -439,6 +439,66 @@ So, $\Psi(t) = \sum_j \ket{E_j}\braket{E_j|\Psi(0)} e^{-\frac{i}{\hbar}E_j t}$.
 4. Use above solution to find the state at any later time.
 5. If you have some other operator L, you can "predict" the outcome of measuring future state using the eigenvectors of L. i.e., the probability the outcome of measuring L is $\lambda_i$ is precisely $|\braket{\lambda_i|\Psi(t)}|^2$.
 
+
+## Complex systems
+
+There are systems for which there are more than two observables, and they all can be measured simultaneously. Single spin is **not** such system. Though there are three observables $\sigma_{\{x,y,z\}}$. Only one of them can be observed at a time.
+
+Particle moving in three dimensions, all three dimensions x, y, and z can be measured simultaneously.
+
+Other such system is a system of two particles. Let's denote these two observables as L and M.
+If we measure both spins, we leave the system in a state which is simultaneously eigenvector of both L and M. Let the eigenvectors of L be denoted as $\lambda_i$ and same for M with $\mu_a$.
+
+In order to have simultaneous eigenvectors $\ket{\lambda, \mu}$, L and M must commute with each other. i.e., $LM \ket{\lambda, \mu} = ML\ket{\lambda, \mu}$. i.e., $[L, M]\ket{\lambda, \mu} = 0$. Since this statement is true of any basis eigenvector $\ket{\lambda, \mu}$, we know that $[L, M] = 0$.
+
+Thus, if we have complete basis of simultaneous eigenvectors, the observables commute. Converse is also true. If observables commute, they have a complete basis of simultaneous eigenvectors. This statement is true for any number of observables in the system, and not just two.
+
+
+
+
+
+Suppose, we have a basis of states $\ket{a,b,c, \dots}$ for some complex system. 
+
+$$\ket{\Psi} = \sum_{a,b,c,\dots} \psi{(a,b,c, \dots)} \ket{a,b,c, \dots}$$
+
+Where, $\psi{(a,b,c, \dots)} = \braket{a,b,c, \dots|\Psi}$. This $\psi$ is called a wave function.
+
+$P(a,b,c, \dots) = \psi^\ast{(a,b,c, \dots)} \psi{(a,b,c, \dots)}$. This is the probability of observing the value $a,b,c,\dots$ of commuting observables $A,B,C,\dots$.
+
+
+If a state is an eigenvector of operator A, which does not commute with B, then it will not be an eigenvector for B. Thus, if A and B don't commute, there will be uncertainity in either A or B if not both.
+
+
+
+### Quantifying Uncertainty
+
+The system is in state $\ket\Psi$. We want to observe some A. A can be thought as a random variable. The possible outcomes are eigenvalues of A, with predefined probabilities. Thus $\braket{A}$ is well defined, and is the expected value of A. We can also find the variance of A! This quantifies the uncertainty of A. 
+
+First define $\bar{A} = A - \braket{A}I$. This is also an Hermitian operator, so has real eigenvalues. If $a$ is an eigenvalue of A, $\bar{a} = a - \braket{A}$ is an eigenvalue of $\bar{A}$.
+
+Thus the variance, denoted as $(\Delta A)^2 = \sum_a \bar{a}^2 P(a)$.
+
+A little bit of algebra shows that this is equivalent to $\braket{\bar{A}^2} = \braket{\Psi|\bar{A}^2|\Psi}$.
+
+
+### Uncertainty Principle
+
+From triangle inequality $|x| + |y| \ge |x+y|$, one can derive $2|x||y| \ge |\braket{x|y} + \braket{y|x}|$. (Hint: Square both sides, and expand).
+
+Putting, $x = A\Psi$ and $y = iB\Psi$, we get $\Delta{A} \Delta{B} \ge \frac{1}{2} | \braket{\Psi|[A, B]|\Psi}$. (Hint: Though formula is true in general, it is easy to derive by assuming that $\braket{A} = \braket{B} = 0$, in which case $(\Delta{A})^2 = \braket{A^2}$.
+
+
+
+
+## Composite System
+
+Atom is made of nucleons and electrons, each is a quantum system of it's own. We want to study composite system.
+
+For the moment we assume there are two systems, A and B (a.k.a. Alices's sytem and Bob's sytem, respectively).
+A has states from staet space $S_A$, which has dimensionality of $N_A$. Same for system B. 
+
+The combined system has statespace $S = S_A \otimes S_B$, which has dimensionality $N_A N_B$. $\otimes$ is a tensor product. The states of S are denoted as $\ket{ab}$, where $a \in S_A$ and $b \in S_B$.
+
 ```python
 
 ```
