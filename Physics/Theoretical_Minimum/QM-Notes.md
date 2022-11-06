@@ -314,7 +314,7 @@ n_z & (n_x - i n_y) \\
 \end{bmatrix}
 $$
 
-
+<!-- #region -->
 ### Spin-Polarization Principle
 
 For any state $\ket{A} = \alpha_u \ket{u} + \alpha_d \ket{d}$, there exists some direction $\hat n$ such that $\sigma \cdot \hat n = \ket{A}$.
@@ -322,8 +322,9 @@ For any state $\ket{A} = \alpha_u \ket{u} + \alpha_d \ket{d}$, there exists some
 States of the spins are characterized by a polarization vector, and along the polarization vector the component of the spin is predictably +1.
 
 
+General spin state is $cos(\frac{\beta}{2}) \ket{u} + e^{i\phi} sin(\frac{\beta}{2}) \ket{d}$.
 
-
+<!-- #endregion -->
 
 ### Time Development Operator
 
@@ -485,11 +486,11 @@ A little bit of algebra shows that this is equivalent to $\braket{\bar{A}^2} = \
 
 From triangle inequality $|x| + |y| \ge |x+y|$, one can derive $2|x||y| \ge |\braket{x|y} + \braket{y|x}|$. (Hint: Square both sides, and expand).
 
-Putting, $x = A\Psi$ and $y = iB\Psi$, we get $\Delta{A} \Delta{B} \ge \frac{1}{2} | \braket{\Psi|[A, B]|\Psi}$. (Hint: Though formula is true in general, it is easy to derive by assuming that $\braket{A} = \braket{B} = 0$, in which case $(\Delta{A})^2 = \braket{A^2}$.
+Putting, $x = A\ket\Psi$ and $y = iB\ket\Psi$, we get $\Delta{A} \Delta{B} \ge \frac{1}{2} | \braket{\Psi|[A, B]|\Psi}$. (Hint: Though formula is true in general, it is easy to derive by assuming that $\braket{A} = \braket{B} = 0$, in which case $(\Delta{A})^2 = \braket{A^2}$.
 
 
 
-
+<!-- #region tags=[] -->
 ## Composite System
 
 Atom is made of nucleons and electrons, each is a quantum system of it's own. We want to study composite system.
@@ -498,6 +499,90 @@ For the moment we assume there are two systems, A and B (a.k.a. Alices's sytem a
 A has states from staet space $S_A$, which has dimensionality of $N_A$. Same for system B. 
 
 The combined system has statespace $S = S_A \otimes S_B$, which has dimensionality $N_A N_B$. $\otimes$ is a tensor product. The states of S are denoted as $\ket{ab}$, where $a \in S_A$ and $b \in S_B$.
+
+If an operator M acts on the states of the composite system, M has $N_A N_B$ rows and colums. The entry $M_{a'b', ab}$ is given by $\braket{a'b'|M|ab}$. The basis vectors $\ket{ab}$ are taken to be orthonormal. $\braket{ab|a'b'} = [a = a', b = b']$.
+
+Thus, any state in the composite system is written as $\ket\Psi = \sum_{a,b} \psi(a, b) \ket{ab}$.
+<!-- #endregion -->
+
+<!-- #region -->
+### Two Spin System
+
+Let's have four state vectors $\ket{uu}, \ket{ud}, \ket{du}, \ket{dd}$.
+
+
+#### Product State
+A product state is the result of completely independent preparations of two spins, each with its' own apparatus to prepare a spin. 
+
+Suppose spin A is prepared in $\alpha_u \ket{u} + \alpha_d \ket{d}$ and B is prepared in $\beta_u \ket{u} + \beta_d \ket{d}$ Where $\alpha^\ast_u \alpha_u + \alpha^\ast_d \alpha_d = \beta^\ast_u \beta_u + \beta^\ast_d \beta_d = 1$. In such case we need 4 real parameters to define the state (2 for each spin).
+
+Thus, the combined product state is written as $\{\alpha_u \ket{u} + \alpha_d \ket{d} \} \otimes \{ \beta_u \ket{u} + \beta_d \ket{d} \}$. This can be expanded, to rewrite in the basis vectors of the combined system, as $\alpha_u \beta_u \ket{uu} + \alpha_u \beta_d \ket{ud} + \alpha_d \beta_u \ket{du} + \alpha_d \beta_d \ket{dd}$. 
+
+The main feature of a product state is that each subsystem behaves independently of the other.
+
+
+#### General Tensor product space.
+The general space is written as $\psi_{uu} \ket{uu} + \psi_{ud} \ket{ud} + \psi_{du} \ket{du} + \psi_{dd} \ket{dd}$. Unlike product space, we need 6 real parameters (8(to define complex numbers) - 1 (normalization) - 1(phase factor)).
+
+Thus, there has to be some states which can not be written as product state. Singlet, and triplets are such states. 
+
+Singlet: $\ket{sing} = \frac{1}{\sqrt{2}} (\ket{ud} - \ket{du})$.
+
+Triplets:
+1. $T_1 = \frac{1}{\sqrt{2}} (\ket{ud} + \ket{du})$.
+2. $T_2 = \frac{1}{\sqrt{2}} (\ket{uu} + \ket{dd})$.
+3. $T_3 = \frac{1}{\sqrt{2}} (\ket{uu} - \ket{dd})$.
+
+
+It is easy to prove that these states can't be written as product states. (Hint: for product state you have to show that $\alpha_x \beta_y = c$, but this will be impossible as some other requirement $\alpha_x \beta_w = 0$  or $\alpha_z \beta_y = 0$ will be violated.)
+
+These states are maximally entangled.
+<!-- #endregion -->
+
+<!-- #region -->
+### Observables in combined system.
+
+The observables in the case of single sping system, still apply in the combined system. They just modify their half. 
+
+E.g. if $\sigma_x$ is observable of spin A, $\sigma_x \ket{ud} = \ket{dd}$.
+
+Note that $\sigma_x$ for single spin system and $\sigma_x$ for combined systems are different operators. This is easy to see in the matrix forms. The two matrices are different. 
+
+In the case of single spin system (or product state), there is a direction where the measurement is guaranteed to be +1. Thus, $\braket{\vec{\sigma} \cdot \vec{n}} = \braket{\Psi|\vec{\sigma} \cdot \vec{n}|\Psi} = 1$, for that particular $\vec{n}$. Thus we know that none of the $\braket{\sigma_x}, \braket{\sigma_y}, \braket{\sigma_z}$ can be zero(which would lead to contradiction). 
+
+On the other hand, if you compute $\braket{\sigma_x}$ for $\ket{sing}$, you will find it to be zero. In fact, for singlet state, $\braket{\sigma_x} = \braket{\sigma_y} = \braket{\sigma_z} = 0$. Since the components are zero on expectation, we are equaly likely to get +1 and -1 for any measurement. Thus, although the state is known, we don't know the outcome.
+
+
+---
+
+The operators that act on the two separate factors commute with one another.
+
+The operator $\tau_z \sigma_z$, is a product of two oprators. Little math tells us that $\ket{sing}$ is an eigenvector for $\tau_z \sigma_z$. $\tau_z \sigma_z \ket{sing} = -\ket{sing}$. This means that the product of observations is always -1. Thus both measurements always have opposite signs. In fact, $\ket{sing}$ is also an eigenvector for operators $\tau_x \sigma_x$ and $\tau_y \sigma_y$, with eigenvalue -1.
+
+On the other hand if you try to compute $\braket{\tau_x \sigma_y}$, you will find that to be 0.
+
+For the triplets:
+
+
+
+|                            | $\ket{sing}$ | $\ket{T_1}$ | $\ket{T_2}$ | $\ket{T_3}$ |
+|----------------------------|--------------|-------------|-------------|-------------|
+| $\braket{\sigma_z \tau_z}$ | -1         | -1        | +1        | +1        |
+| $\braket{\sigma_x \tau_x}$ | -1         | +1        | +1        | -1        |
+| $\braket{\sigma_y \tau_y}$ | -1         | +1        | -1        | +1        |
+
+Thus, singlet and triplets are eigenvalues for the product operators.
+
+--- 
+
+$\vec{\sigma} \cdot \vec{\tau}$ is an observable that can not be measured by measuring two spins by individual apparatuses. How can we measure such thing? Some atoms have spins. When two of these atoms are close to each other (e.g., in a lattice), in some situations their Hamiltonian is proportional to $\vec{\sigma} \cdot \vec{\tau}$.
+
+The four vectors above are eigenvectors for $\vec{\sigma} \cdot \vec{\tau}$. The singlet has eigenvalue -3 and each triplet has eigenvalue +1.
+<!-- #endregion -->
+
+Comment: Generating singlet state is easy. Two spins prefer to be anti-aligned. Now bring these two spins together, they will radiate a photon and result in this state, as this state has low energy.
+
+For product state it is easy to prove $\braket{AB} = \braket{A} \braket{B}$. Thus, we can see that $\braket{\sigma_w \tau_w}$ can not be product states. Because for them $\braket{\sigma_w} = 0$.
 
 ```python
 
