@@ -519,7 +519,7 @@ Let's have four state vectors $\ket{uu}, \ket{ud}, \ket{du}, \ket{dd}$.
 
 
 #### Product State
-A product state is the result of completely independent preparations of two spins, each with its' own apparatus to prepare a spin. 
+A product state is the result of completely independent preparations of two spins, each with its' own apparatus to prepare a spin. If the state is not a product state than it is entangled.
 
 Suppose spin A is prepared in $\alpha_u \ket{u} + \alpha_d \ket{d}$ and B is prepared in $\beta_u \ket{u} + \beta_d \ket{d}$ Where $\alpha^\ast_u \alpha_u + \alpha^\ast_d \alpha_d = \beta^\ast_u \beta_u + \beta^\ast_d \beta_d = 1$. In such case we need 4 real parameters to define the state (2 for each spin).
 
@@ -595,21 +595,23 @@ For product state it is easy to prove $\braket{AB} = \braket{A} \braket{B}$. Thu
 
 ### Outer Products
 
-$\ket{\psi} \bra{\phi}$ is an operator. Which can be applied to bras or kets.
+$\ket{\Psi} \bra{\Phi}$ is an operator. Which can be applied to bras or kets.
 
-$\ket{\psi} \bra{\phi} \ket{A} = \ket{\psi} \braket{\phi|A}$
+$\ket{\Psi} \bra{\Phi} \ket{A} = \ket{\Psi} \braket{\Phi|A}$
 
-Specificaly if $\ket\psi$ is normalized, **Projection Operator** is defined as $\ket{\psi}\bra{\psi}$.
+Specificaly if $\ket\Psi$ is normalized, **Projection Operator** is defined as $\ket{\Psi}\bra{\Psi}$.
 
 Properties of Projection Operators.
 - They are Hermitian.
-- $\psi$ is an eigenvector with eigenvalue +1.
-- All perpendicular vectors to $\psi$ are eigenvectors with eigenvalue 0.
-- Square of projection operator is the projection operator itself. $(\ket\psi \bra\psi)^2 = \ket\psi \bra\psi$.
+- $\Psi$ is an eigenvector with eigenvalue +1.
+- All perpendicular vectors to $\Psi$ are eigenvectors with eigenvalue 0.
+- Square of projection operator is the projection operator itself. $(\ket\Psi \bra\Psi)^2 = \ket\Psi \bra\Psi$.
 - Trace($Tr(L) = \sum_i \braket{i|L|i})$ of projection operator is 1.
 - If we add all proj. operators for all basis vectors we get identity operator. $\sum_i \ket{i}\bra{i} = I$.
-- Expectation of any operator L, for state $\psi$ is $Tr (\ket\psi \bra\psi L)$.
+- Expectation of any operator L, for state $\Psi$ is $Tr (\ket\Psi \bra\Psi L)$.
 
+
+### Density Matrix
 
 Suppose we don't know the exact state of the system, but we know that it is either $\Psi$ of $\Phi$ with equal probability. Then, the expected value is $ \frac{\braket{\Psi|L|\Psi} + \braket{\Phi|L|\Phi}}{2}$. If we define a new operator $\rho = \frac{1}{2}\ket\Psi \bra\Psi + \frac{1}{2} \ket\Phi \bra\Phi$, the expected value can be computed as $Tr (\rho L)$.
 
@@ -620,9 +622,10 @@ In a pure state, density matrix is just a projection operator. In a mixed state,
 In the matrix form, for particular basis, $\rho_{aa'} = \braket{a|\rho|a'}$. In this basis, $\braket{L} = \sum_{a,a'} \rho_{aa'} L_{a'a}$.
 
 
-In classical system, two particles in a line for example, if we know state of the complete system (i.e., $x_1, x_2, p_1, p_2$), we know the state of the constituents (i.e., $x_1, p_1$ and $x_2, p_2$).
+In classical system, two particles in a line for example, if we know state of the complete system (i.e., $x_1, x_2, p_1, p_2$), we know the state of the constituents (i.e., $x_1, p_1$ and $x_2, p_2$). 
+(Comment: This is classical pure state. But, sometimes we don't know the exact $x_1, x_2, p_1, p_2$, but have some distribution of $\rho(x_1, x_2, p_1, p_2)$. This is mixed state.)
 
-This is not true in QM when there is entanglement.
+This is not true in QM when there is entanglement. In such cases, even if the combined system can be in pure state $\psi(a,b)$, each of it's constituent states must be described by a mixed state (unlike classical setting).
 
 Say we have the full knowledge of the combined system(A, B). That is we know $\psi(a, b)$ of the combined system. And we want to know what we can about A. Let's pick an operator L which only acts on A.
 
@@ -640,7 +643,7 @@ $$
 
 Where, we defined $\rho_{aa'} = \sum_{b}\psi^{\ast}{(a'b)}  \psi{(ab)}$.
 
-Note the difference in the definition of the $\rho$s. If in the above equation, we had product state (i.e., $\psi(a, b) = \psi(a) \phi(b)$), we will get $\rho_{aa'} = \psi^{\ast}{(a')}  \psi{(a)} \sum_{b}\phi^{\ast}{(b)}  \phi{(b)} = \psi^{\ast}{(a')}  \psi{(a)}$. Thus, we get our projection operator (i.e., pure state density matrix) back.
+Note the difference in the definition of the $\rho$s. If in the above equation, we had product state (i.e., non entangled state $\psi(a, b) = \psi(a) \phi(b)$), we will get $\rho_{aa'} = \psi^{\ast}{(a')}  \psi{(a)} \sum_{b}\phi^{\ast}{(b)}  \phi{(b)} = \psi^{\ast}{(a')}  \psi{(a)}$. Thus, we get our projection operator (i.e., pure state density matrix) back.
 
 But in general, even if we had pure state for combined system ($\psi(a, b)$), we may not get pure state for constituent system.
 
@@ -655,14 +658,14 @@ $$
 
 
 <!-- #region tags=[] -->
-### Properties of Density Matrix
+#### Properties of Density Matrix
 
 1. Diagonal entries tell us the probability of the observation. That is, $P(a) = \rho_{aa}$. This is in line with traditional probability theory. The probability of observing eigenvalues for a, b is $P(a, b) = \psi^\ast(ab) \psi(ab)$. Marginalizing out b gives us $P(a) = \sum_b \psi^\ast(ab) \psi(ab)$. This is also easy to see in the density matrix for pure state shown above.
 2. Density matrix is Hermitian.
 3. Trace of density matrix is 1.
 4. All Eigenvalues are between 0 and 1 inclusive. Since the trace is 1, if one eigenvalue is 1, the rest are 0.
 5. For a **pure** state, $\rho^2 = \rho$ and $Tr(\rho^2) = 1$.
-6. For entangled state, $\rho^2 \ne \rho$ and $Tr(\rho^2) < 1$.
+6. For a mixed or entangled state, $\rho^2 \ne \rho$ and $Tr(\rho^2) < 1$.
 
 Proving 5 is easy. Simple algebra. But, I found proving 6 to be little bit difficult. So here is the proof.
 
@@ -702,6 +705,252 @@ Some facts used in this proof are,
     
 </details>
 <!-- #endregion -->
+
+<details>
+    <summary> Examples of Density matrix (Exercise 7.8)</summary>
+
+1. $\ket{\Psi_1} =  \frac{1}{2}(\ket{uu} + \ket{ud} + \ket{du} + \ket{dd})$
+Density matrix for system A
+
+$$
+\left(\begin{matrix} 
+\frac{1}{2} && \frac{1}{2} \\ 
+\frac{1}{2} && \frac{1}{2} \\ 
+\end{matrix}\right) 
+$$
+
+Density matrix for system B
+
+$$
+\left(\begin{matrix} 
+\frac{1}{2} && \frac{1}{2} \\ 
+\frac{1}{2} && \frac{1}{2} \\ 
+\end{matrix}\right) 
+$$
+
+For both the systems $\rho^2 = \rho$. So is pure state.
+
+2. $\ket{\Psi_2} =  \frac{1}{\sqrt2}(\ket{uu} + \ket{dd}) $
+
+Density matrix for system A
+
+$$
+\left(\begin{matrix} 
+\frac{1}{2} && 0 \\ 
+0 && \frac{1}{2} \\ 
+\end{matrix}\right) 
+$$
+
+Density matrix for system B
+
+$$
+\left(\begin{matrix} 
+\frac{1}{2} && 0 \\ 
+0 && \frac{1}{2} \\ 
+\end{matrix}\right) 
+$$
+
+For both the systems $\rho^2 \ne \rho$. So is mixed state.
+
+3. $\ket{\Psi_3} =  \frac{1}{5}(3\ket{uu} + 4\ket{ud})$
+
+$$
+\left(\begin{matrix} 
+1 && 0 \\ 
+0 && 0 \\ 
+\end{matrix}\right) 
+$$
+
+Density matrix for system B
+
+$$
+\left(\begin{matrix} 
+\frac{9}{25} && \frac{12}{25} \\ 
+\frac{12}{25} && \frac{16}{25} \\ 
+\end{matrix}\right) 
+$$
+
+For both the systems $\rho^2 = \rho$. So is pure state.
+    
+</details>
+
+<!-- #region tags=[] -->
+### Test for entanglement
+We have a wave function $\psi(a, b)$, and we want to test if that state is entangled or not.
+
+#### Correlation Test
+Say there are two observables A and B, for two systems. The correlation between them is defined as $C(A, B) = \braket{AB} - \braket{A} \braket{B}$.
+
+If a system is any state for which $C(A, B) \ne 0$, the state is entangled.
+
+#### Using Density Matrix
+
+**Theorem**: For any product state, the density matrix of any constituent subsystem has exactly one non-zero eigenvalue (thus it has to be 1). Moreover, the eigenvector for this eigenvalue is the factor wave function for that subsystem.
+
+E.g., if A's wave function is $\psi$, and B's wave function is $\phi$, such that $\psi(a, b) = \psi(a) \phi(b)$, $\psi$ is the eigenvector with eigenvalue 1 for A's density matrix.
+
+Conversly, if there are at least two eigenvalues($\lambda_j > 0, \lambda_k > 0$ (and since the Trace = 1, they are less than 1), one can prove that $\rho^2 \ne \rho$. And since $\rho^2 = \rho$ is necessary and sufficient condition for product state, we know that the state must be entangled.
+
+<details>
+    <summary> Proof that at least two positive eigenvalues implies $\rho^2 \ne \rho$.</summary>
+Proof by contradiction.
+    
+Assume $\rho^2 = \rho$. 
+
+$$
+\rho^2 - \rho = 0 = \sum_i (\lambda_i^2 - \lambda_i) \ket{\Psi_i} \bra{\Psi_i}
+$$
+
+Since, in particular $\lambda_k^2 - \lambda_k < 0$ and $\Psi_i$ are eigenbasis, 
+
+$$
+\begin{align*}
+\braket{\Psi_k|0|\Psi_k} = 0 &= \sum_i (\lambda_i^2 - \lambda_i) \braket{\Psi_k|\Psi_i} \braket{\Psi_i|\Psi_k} \\
+&= \lambda_k^2 - \lambda_k \\
+&< 0
+\end{align*}
+$$
+
+Which is a contradiction.    
+</details>
+
+In a maximally entangled state, all the eigenvalues of the density matrix are equal. $\rho_{aa} = \frac{1}{N_A}$, where $N_A$ is the number of states in subsystem A. Although in such state we don't know anything about one particular subsystem (uniform probability distribution), there is correlation. If we measure one subsytem, we know the outcome of the experiment on other subsystem.
+
+
+<!-- #endregion -->
+
+
+## Continuous Domain
+
+
+So far we have talked about discrete case, where observable was discrete. There are observables like position which are continuous.
+
+Our wave function is discrete complex-valued function. $\psi(\lambda)$, where for spin $\lambda$ was either up or down. The state $\Psi$'s wave function depended upon the basis. In the up-down basis $\Psi = \psi(\ket{u}) \ket{u} + \psi(\ket{d}) \ket{d}$. 
+
+For cases like particle moving on a line (x-axis), we need wave function that is continuous. We can write it as $\psi(x)$, where x is a real number. Notice that functions like this also form a vector space. Two functions can be added. It can be multiplied with a complex number to get another function, and so on.
+
+Inner Product
+: $\braket{\Phi|\Psi} = \int_{-\infty}^{\infty} \phi^\ast(x)\psi(x) dx$
+
+Probability Density
+: $P(x) = \psi^\ast(x) \psi(x)$ is NOT the probability of observing x. It is instead a density around x.
+
+Dirac Delta Function
+: $\delta$ is defined such that $\int_{-\infty}^{\infty} \delta(x - x') F(x') dx' = F(x)$.
+
+<!-- #region tags=[] -->
+### Integration By Parts
+
+$ FG |_a^b - \int_a^b G dF = \int_a^b F dG$.
+
+Generally $F \to 0 \text{ as } |x| \to \infty$ for wave functions to be properly normalized. And same for G. So $FG |_a^b = 0$ in such cases. So the formula is quite easy to remember in QM.
+
+$$
+- \int_{-\infty}^\infty G \frac{dF}{dx} dx = \int_{-\infty}^\infty F \frac{dG}{dx} dx
+$$
+
+Move the differentiation to another function by changing the sign.
+<!-- #endregion -->
+
+### Linear Operators
+
+- **X**
+: Multiply by x operator, $X \psi(x) = x \psi(x)$.
+- **D**
+: Diffrentiation operator, $D \psi(x) = \frac{d \psi(x)}{dx}$.
+- **P**
+: $P = -i \hbar D$.
+
+#### Hermitian Operators.
+L is Hertmitian if $\braket{\Psi|L|\Phi} = \braket{\Phi|L|\Psi}^\ast$.
+
+Since x (domain of $\psi, \phi$) is real, it is easy to show that "Multiply by X" $X$ operator is Hermitian.
+
+On the other hand, you will find that D is not Hermitian. $\braket{\Psi|D|\Phi} = - \braket{\Phi|D|\Psi}^\ast$. Operators like this (where $D^\dagger = -D$ are called anti-hermitian. For any anti-hermitian operator A, both $iA$ and $-iA$ are hermitian.
+
+Thus, we define an operator $P = -i \hbar D$ such that $-i \hbar D \  \psi(x) = -i \hbar \frac{d\psi(x)}{dx}$. This operator is Hermitian.
+
+
+### Particle State
+
+#### Formal Prose
+
+In classical mechanics, for a particle moving on x-axis, if the Hamiltonian equations are known, given (x, p) (i.e., position, and momenta p = mv) we know the flow in the phasespace.
+
+However, decades of experience tells us that in Quantum Mechanics, one does not have states where both the components are specified. We know from experience that `x AND p` is not knowable, but `x OR p` can be known.
+
+#### Details
+
+Since position, and momentum are observable, they would have Hermitian Operators associated with them. For position, this operator is **X**.
+
+##### Eigenvalues, and Eigenvectors for **X**.
+Trying to solve the eigenvalue equation,
+
+$$
+\begin{align*}
+x \psi(x) &= x_0 \psi(x) \\
+(x - x_0)\psi(x) &=0 
+\end{align*}
+$$
+
+This holds true for all possible values of x. When $x \ne x_0$, this means that $\psi(x) = 0$. At $x = x_0$ it can take non zero value. We know such function, it is Dirac's Delta function, $\delta(x - x_0)$.
+
+Thus *every* $x' \in \mathbb{R}$ is an eigenvalue for **X**, with eigenfunction $\delta(x - x')$.
+
+$\braket{x_0|\Psi} = \int_{-\infty}^{\infty} \delta(x-x_0) \psi(x) dx = \psi(x_0)$.
+
+Thus $\braket{x|\Psi} = \psi(x)$.
+
+Wave function in the position representation: is denoted as $\psi(x)$ and is the projection of the state on the eigenvectors for position, i.e., $\braket{x|\Psi} = \psi(x)$.
+
+##### Eigenvalues, and Eigenvectors for **P**, the Momentum Operator
+
+NOTE: Connection with classical mass times velocity will become clear later. 
+
+If we solve for eigenvalue equation, $P \psi(x) = -i \hbar D \psi(x) = p \psi(x)$, we get the solution $\psi_p(x) = A e^{\frac{ipx}{\hbar}}$. Subscript p denotes the eigenfunction associated with eigenvalue p. The A is a normalizing constant, required to make the integration 1. It turns out to be, $A = \frac{1}{\sqrt{2 \pi}}$. Note that, this eigenfunction is written in basis of position.
+
+Thus, 
+
+$\braket{x|p} = \frac{1}{\sqrt{2 \pi}} e^{\frac{ipx}{\hbar}}$
+
+And, $\braket{p|x} = \frac{1}{\sqrt{2 \pi}} e^{\frac{-ipx}{\hbar}}$.
+
+
+##### Waves?
+
+The momentum function $\frac{1}{\sqrt{2 \pi}} e^{\frac{ipx}{\hbar}}$ has sin and cosine. The A--the constant-- is not important in the frequency of the wave, it just changes the mangnitude. $e^{\frac{ipx}{\hbar}}$ has a wavelength of $\frac{2 \pi \hbar}{p}$. (Because: $e^{\frac{ip(x+\lambda)}{\hbar}} = e^{\frac{ipx}{\hbar}}  e^{i 2 \pi} = e^{\frac{ipx}{\hbar}}$).
+
+In 20th century, scientists wanted to detect smaller and smaller particles. One can’t resolve objects much smaller than the wavelength one using to look at them. So in 20th century, scientists wanted to find light of smaller and smaller wavelengths. We will later see that light of a given wavelength is composed of photons whose momentum is related to the wavelength by the relation $\lambda = \frac{2 \pi \hbar}{p}$. But, as per this relation, to get smaller wavelength, one must increase the momentum. This requires high energy. Hence, particle acclerators were/are required.
+
+
+### Momentum Basis
+
+We saw the eigenfunction associated with momentum operator was a function of x! That is because we wrote it in position basis. If for the state $\Psi$, we want to measure it's momentum, we can do so by using the probability density function $\psi^\ast(p) \psi(p)$. $\psi(p)$ (not to be confused with $\psi(x)$) is a function of p. In the momentum basis it is just $\braket{p|\Psi}$.
+
+Both wave function $\psi(x)$ and $\psi(p)$ represent the same state $\Psi$, just in different basis. It is possible to convert between two using fourier transform. 
+
+$$
+\begin{align*}
+\psi(p) &= \frac{1}{\sqrt{2 \pi}} \int  e^{\frac{-ipx}{\hbar}} \psi(x) dx \\
+\psi(x) &= \frac{1}{\sqrt{2 \pi}} \int  e^{\frac{ipx}{\hbar}} \psi(p) dp \\
+\end{align*}
+$$
+
+<details>
+<summary> Derivation of the transform</summary>
+$$
+\begin{align*}
+\psi(p) &= \braket{p|\Psi} \\
+        &= \braket{p\left|\int dx \ket{x}\bra{x}  \right| \Psi} \\
+        &= \int dx \braket{p|x}\braket{x|\Psi} \\
+        &= \frac{1}{\sqrt{2 \pi}} \int  e^{\frac{-ipx}{\hbar}} \psi(x) dx \\
+\psi(x) &= \braket{x|\Psi} \\
+        &= \braket{x\left|\int dp \ket{p}\bra{p}  \right| \Psi} \\
+        &= \int dp \braket{x|p}\braket{p|\Psi} \\
+        &= \frac{1}{\sqrt{2 \pi}} \int  e^{\frac{ipx}{\hbar}} \psi(p) dp
+\end{align*}
+$$
+</details>
 
 ```python
 
