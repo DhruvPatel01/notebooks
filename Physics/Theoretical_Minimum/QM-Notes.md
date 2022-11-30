@@ -845,9 +845,7 @@ $ FG |_a^b - \int_a^b G dF = \int_a^b F dG$.
 
 Generally $F \to 0 \text{ as } |x| \to \infty$ for wave functions to be properly normalized. And same for G. So $FG |_a^b = 0$ in such cases. So the formula is quite easy to remember in QM.
 
-$$
-- \int_{-\infty}^\infty G \frac{dF}{dx} dx = \int_{-\infty}^\infty F \frac{dG}{dx} dx
-$$
+$$- \int_{-\infty}^\infty G \frac{dF}{dx} dx = \int_{-\infty}^\infty F \frac{dG}{dx} dx$$
 
 Move the differentiation to another function by changing the sign.
 <!-- #endregion -->
@@ -937,7 +935,8 @@ $$
 $$
 
 <details>
-<summary> Derivation of the transform</summary>
+    <summary> Derivation of the transform</summary>
+    
 $$
 \begin{align*}
 \psi(p) &= \braket{p|\Psi} \\
@@ -950,7 +949,54 @@ $$
         &= \frac{1}{\sqrt{2 \pi}} \int  e^{\frac{ipx}{\hbar}} \psi(p) dp
 \end{align*}
 $$
+    
 </details>
+
+
+### Relation with Poisson Brackets
+
+earlier we show that $[L, M] = i\hbar\{L, M\}$. 
+
+We can compute the commutator $[X, P] = XP - PX$. 
+
+$$
+\begin{align*}
+XP \psi(x) &= -i \hbar x \frac{d \psi(x)}{dx} \\
+PX \psi(x) &= -i \hbar \frac{d x \psi(x)}{dx} \\
+           &= -i \hbar x \frac{d \psi(x)}{dx} - i\hbar \psi(x) \\
+[X, P]\psi(x) &= i \hbar \psi(x) \\
+[X, P] &= i \hbar
+\end{align*}
+$$
+
+Thus, the commutator is a number, which is non-zero. That is, X and P don't commute. You can't measure one without disturbing the other.
+
+This also implies that Poisson bracket {X, P} = 1. This was proved in classical mechanics course. This is the link between classical momentum and quantum momentum P.
+
+
+### Heisenberg's Uncertainty Principle
+
+Earlier we had derived $\Delta{A} \Delta{B} \ge \frac{1}{2} |\braket{\Psi|[A, B]|\Psi}|$. 
+
+Thus, $\Delta{X} \Delta{P} \ge \frac{1}{2} |\braket{\Psi|[X, P]|\Psi}| = \frac{1}{2} \hbar$. 
+
+Let's look at example. I think this section requires more mathematical rigor, but I am not at the point where I can justify much of what I am writing. 
+
+Let's assume that our state is eigenstate of the momentum. That is, $\psi(p_0) = \delta (p-p_0)$. Then, as per Fourier formulas, $$
+\begin{align*}
+\psi(x) &= \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty}  e^{\frac{ipx}{\hbar}} \psi(p) dp \\
+        &= \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty}  e^{\frac{ipx}{\hbar}} \delta(p-p_0) dp \\
+        &= \frac{1}{\sqrt{2 \pi}} e^{\frac{i p_0 x}{\hbar}} \\
+\psi^\ast(x) &= \frac{1}{\sqrt{2 \pi}} e^{\frac{-i p_0 x}{\hbar}} \\
+\psi^\ast(x)\psi(x) &= \frac{1}{2 \pi}
+\end{align*}
+$$
+
+Thus, the density function for position is as uncertain as it can get, it is uniform.
+
+In this case, there is no uncertainty in $\Delta P$. That is $\Delta P = 0$. However, $\Delta X = \infty$. Obviously, the product is not defined. But, maybe in the limits the product is greater than $\hbar /2$?
+
+See discussion at https://physics.stackexchange.com/questions/553145/does-the-heisenbergs-uncertainty-equation-holds-when-one-of-the-observable-have.
 
 ```python
 
