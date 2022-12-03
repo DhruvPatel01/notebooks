@@ -998,6 +998,65 @@ In this case, there is no uncertainty in $\Delta P$. That is $\Delta P = 0$. How
 
 See discussion at https://physics.stackexchange.com/questions/553145/does-the-heisenbergs-uncertainty-equation-holds-when-one-of-the-observable-have.
 
+
+## Time Evolution of Particles
+
+
+### Simple Example
+
+Recall that time evolution of particle is given by generalized Schrodinger's equation $i\hbar \frac{\partial \psi(x, t)}{\partial t} = H \psi(x, t)$. Where H is Hamiltonian, and is energy of the quantum system.
+
+A simplest Hamiltonian is $H = -cP$, where c is a fixed number. If we apply above equation here, we get, 
+$i\hbar \frac{\partial \psi(x, t)}{\partial t} = -c i \hbar \frac{\partial \psi(x, t)}{\partial x}$. Which leads to $\frac{\partial \psi(x, t)}{\partial t} = -c \frac{\partial \psi(x, t)}{\partial x}$. Any function $\psi(x - ct)$ solves this equation. 
+
+At T = 0, we have some function $\psi(x)$. Note that due to normalization contraints, this function has to go to zero towards the ends. The wave function might look something like this. 
+
+![image.png](attachment:7891febe-a9f7-46e4-b840-9a4ce96ad8c7.png)
+
+At later time, T = t, $\psi(x-ct)$ has the same shape as $\psi(x)$ but shifted to the right by ct. It is equivalent to say that the wave has translated to the right in space. This translation happens at uniform velocity. If we let c to be the speed of the light, this Hamiltonian almost describes the 1d neutrinos, except that our H only describes particle moving to the right. 
+
+Since the wave function moves rigidly to the right, the expected value also moves to the right at the same velocity. In classical mechanics if let $H = cP$, the Hamiltonian equations give us following equations.
+
+$$
+\begin{align*}
+    \frac{\partial H}{\partial p} &= \dot{x} = c \\
+    \frac{\partial H}{\partial x} &= -\dot{p} = 0 \\
+\end{align*}
+$$
+
+Thus classically, the momentum is conserved, and the particle moves with the constant velocity c.
+
+
+### Non relativistic Particles
+
+Particles that have some mass, can not travel at the speed of light. Classically, a free particle (i.e., zero potential energy) has the Hamiltonian $\frac{p^2}{2m}$.
+
+Inspired from it, we can imagine that QM has hamiltonian $\frac{P^2}{2m}$. When we put definition of P into time-dependent Schrodinger's equation, we get $\frac{\partial \psi}{\partial t} = \frac{i \hbar}{2m} \frac{\partial^2 \psi}{\partial x^2}$.
+
+Susskind's book says that waves with different wavelength travel with different velocities, so this wave changes the shape with time. I don't understand this chain of thoughts. 
+
+There are two explanations I found on the Internet. [Here](https://physics.stackexchange.com/questions/77860/why-do-wave-packets-spread-out-over-time).
+
+1. One explanation is connection with heat equation. The Schrodinger's equation above, is partial differential equation in the form of heat equation. Heat equation says that waves where the curvature is high, dissipaets faster. 
+2. Another explanation is that initially we have some uncertainity in the position, and some uncertainity in the momentum (i.e., velocity). Smaller the uncertainity in position, larger the uncertainity in velocity. So overtime, this uncertainity increases, and the wavefunction spreads.
+
+
+#### Time evolution of the non-relativistic particle.
+
+We follow the recipe outlined earlier.
+1. Find the H somehow. Done: $H = \frac{P^2}{2m}$.
+2. Find the eigenvalues for this H. This is easy. Eigenvectors $P^2$ are same as eigenvectors of P. Just the eigenvalues change to $\frac{p^2}{2m}$. $E(p) = e^{\frac{ipx}{\hbar}}$.
+3. Prepare the state in the initial state $\Psi$.
+4. Use the continuous counterpart of $\Psi(t) = \sum_j \ket{E_j}\braket{E_j|\Psi(0)} e^{-\frac{i}{\hbar}E_j t}$ to find the state at later time. So, 
+$$
+\begin{align*}
+\psi(x, t) &= \int \psi(p) \psi(x, 0) e{^\left(-\frac{i p^2}{\hbar 2 m} t\right)} dp \\
+           &= \int \psi(p) e^\left(\frac{i\left(px - \frac{p^2}{2 m}\right)}{\hbar}\right) dp
+\end{align*}
+$$
+
+Of course, I have abused the notation. A lot.
+
 ```python
 
 ```
