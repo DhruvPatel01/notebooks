@@ -1,0 +1,50 @@
+import numpy as np
+import numba as nb
+import gemv
+
+import time
+import matplotlib.pyplot as plt
+batch_sizes = [10, 50, 100, 500, 1000]
+
+print("NumPy")
+
+for bs in batch_sizes:
+    c = []
+    d = []
+
+    for i in range(10_000):
+        A = np.random.randn(bs, 128)
+        x = np.random.randn(128)
+        y = np.zeros(bs)
+        
+        tic = time.perf_counter()
+        np.dot(A, x, out=y)
+        toc = time.perf_counter()
+        c.append(toc-tic)
+        
+    mean = round(np.mean(c)*10**6, 2)
+    std = round(np.std(c)*10**6, 2)
+    print(bs, mean, "+-", std)
+    
+    time.sleep(60)
+    
+print()
+print("GEMV")
+
+for bs in batch_sizes:
+    c = []
+    for i in range(10_000):
+        A = np.random.randn(bs, 128)
+        x = np.random.randn(128)
+        y = np.zeros(bs)
+        
+        tic = time.perf_counter()
+        gemv.blis_gemv(A, x, y)
+        toc = time.perf_counter()
+        c.append(toc-tic)
+        
+    mean = round(np.mean(c)*10**6, 2)
+    std = round(np.std(c)*10**6, 2)
+    print(bs, mean, "+-", std)
+    
+    time.sleep(60)

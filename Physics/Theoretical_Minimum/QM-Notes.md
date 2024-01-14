@@ -18,10 +18,10 @@ jupyter:
 
 ## Differences from Classical Mechanics
 1. States have different logical structure than CM.
-2. States and measurements are different unlike CM. e.g. Position and Momemntum can be determined by experiments in CM.
+2. States and measurements are different unlike CM. e.g., Position and Momemntum can be determined by experiments in CM.
 
 ## Spins
-Particles have properties attached to it. e.g. mass, electric charge.
+Particles have properties attached to it. e.g., mass, electric charge.
 
 Even a specific particle is not completely specified by its position.
 
@@ -39,13 +39,13 @@ $$
 
 ### Classically,
 
-To test (A or B), one could first **gently** test $\sigma_z$. If it is -1, one would **gently** test $\sigma_x$. The result of doing it otherway (i.e. B or A) will be the same as doing (A or B). The reason is that classically, measurements are gentle. They don't change the state of the system.
+To test (A or B), one could first **gently** test $\sigma_z$. If it is -1, one would **gently** test $\sigma_x$. The result of doing it otherway (i.e., B or A) will be the same as doing (A or B). The reason is that classically, measurements are gentle. They don't change the state of the system.
 
 ### In Quantum Mechanics,
 
 If some entity prepares the spin in $\sigma_z = +1$ state, and we measure `A or B` (whether we use short circuit or not), we will measure it to be true. However, if we measure `B or A`, there is 25% chance that we will measure it to be false.
 
-What about `A and B`? If we conclude that `A and B` is true, can we confirm it again? Answer is no. Since to compute B, we had to measure $\sigma_x$, which ruined measurement of A. Thus we can't confirm it. i.e. experiment is not reproducible.
+What about `A and B`? If we conclude that `A and B` is true, can we confirm it again? Answer is no. Since to compute B, we had to measure $\sigma_x$, which ruined measurement of A. Thus we can't confirm it. i.e., experiment is not reproducible.
 <!-- #endregion -->
 
 <!-- #region tags=[] -->
@@ -64,7 +64,7 @@ $z = x + iy = re^{i\theta}$
 
 $z^\ast = x - iy = re^{-i\theta}$ 
 
-$z^\ast z = r^2$, i.e. a real number
+$z^\ast z = r^2$, i.e., a real number
 
 ### Phase Factors
 
@@ -99,7 +99,7 @@ For every $\ket{A}$ there exists $\bra{A}$ in conjugate space. This space has fo
 
 In the concrete case where ket space is column vectors, bra space is denoted as row vectors.
 
-i.e. if 
+i.e., if 
 
 $$
 \begin{align*}
@@ -145,7 +145,7 @@ $$
 \ket{A} = \sum_i \alpha_i \ket{i},
 $$
 
-where, $\alpha_j = \braket{j|A}$. (To derive this, multiply both sides by $\bra{j}$.
+where, $\alpha_j = \braket{j|A}$. (To derive this, multiply both sides by $\bra{j}$.)
 
 
 # States
@@ -162,7 +162,7 @@ $\sigma_z = \pm 1$. We can denote +1 as state $\ket{u}$ and -1 as $\ket{d}$.
 
 Similarly $\sigma_x = \pm 1$, can be denoted by  $\ket{r}$ and -1 as $\ket{l}$. And $\sigma_y = \pm 1$, can be denoted by  $\ket{o}$ and -1 as $\ket{i}$.
 
-If two states are orthogonal than these two states can be determined together. For example, if $\sigma_z$ was prepared to be in $\ket{u}$, for any subsequent measurements probability that $\ket{d}$ is detected is 0. Thus for binary spin, the state space is two dimensional. For now we can take $\ket{u}, \ket{d}$ as the basis vectors.
+If two states are orthogonal then these two states can be determined together. For example, if $\sigma_z$ was prepared to be in $\ket{u}$, for any subsequent measurements the probability that $\ket{d}$ is detected is 0. Thus, for binary spin, the state space is two dimensional. For now we can take $\ket{u}, \ket{d}$ as the basis vectors.
 
 Then, the generic state $\ket{A} = \alpha_u \ket{u} + \alpha_d \ket{d}$. Where $\alpha_i = \braket{i|A}$.
 
@@ -170,7 +170,7 @@ The meaning of,
 - $\alpha_u^\ast \alpha_u$: If the spin was prepared in $\ket{A}$ state, $\alpha_u^\ast \alpha_u$ is the probability that $\sigma_z = +1$.
 - $\alpha_d^\ast \alpha_d$: is the probability that $\sigma_z = -1$.
 
-Since probabilities must add to 1, $\alpha_u^\ast \alpha_u + \alpha_d^\ast \alpha_d = 1$. It is equivalent to saying that $\ket{A}$ is normalized, i.e. $\braket{A|A} = 1$.
+Since probabilities must add to 1, $\alpha_u^\ast \alpha_u + \alpha_d^\ast \alpha_d = 1$. It is equivalent to saying that $\ket{A}$ is normalized, i.e., $\braket{A|A} = 1$.
 
 General principle of quantum systems: the state of a system is represented by a unit (normalized) vector in a vector space of states. Moreover, the squared magnitudes of the components of the state-vector, **along particular basis vectors**, represent probabilities for various experimental outcomes. 
 
@@ -260,24 +260,24 @@ M \ket{A} &= \ket{B} \\
 $$
 
 #### Hermitian Operators
-- Observables quantities in classcial mechanics are real numbers. i.e. they are their own complex conjugate.
-- Observables in quantum mechanics (i.e. linear operators) are also their own complex conjugates. Such operators are called Hermitian Operators. $M^\dagger = M$.
+- Observables quantities in classcial mechanics are real numbers. i.e., they are their own complex conjugate.
+- Observables in quantum mechanics (i.e., linear operators) are also their own complex conjugates. Such operators are called Hermitian Operators. $M^\dagger = M$.
 
 ##### Properties of Hermitian Operators
 - Their eigenvalues are real.
-- Their eigenvectors form an orthonormal basis. (i.e. their eigenvectors are orthonormal and they form a basis)
+- Their eigenvectors form an orthonormal basis. (i.e., their eigenvectors are orthonormal and they form a basis)
 <!-- #endregion -->
 
 ## Principles
 1. The observable or measurable quantities of QM are represented by a linear operator L. 
 2. The possible readings of the measurements are eigenvalues $\lambda_i$. The state for which reading is **unambiguously** $\lambda_i$ is the corresponding eigenvector $\ket{\lambda_i}$.
-3. Unambiguously distinguishable states are represented by orthogonal vectors. e.g. $\braket{u|d} = 0$.
+3. Unambiguously distinguishable states are represented by orthogonal vectors. e.g., $\braket{u|d} = 0$.
 4. If $\ket{A}$ is the state vector of the system, and the observable L is measured, the probability of observing $\lambda_i$ is given by $\braket{A|\lambda_i}\braket{\lambda_i|A}$.
 
 Since the readings (i.e., eigenvalues) are real and eigenvectors are orthogonal, the operator L must be hermitian.
 
 P1 says that $\sigma_x, \sigma_y, \text{and} \sigma_z$ are identified with a specific linear operator in 2D space of states describing the states.
-P2 says that the actual measurments can take discrete values. E.g., energy of atom will be one of the established energy levels of the atom.
+P2 says that the actual measurments can take discrete values. e.g., energy of atom will be one of the established energy levels of the atom.
 
 
 ### 3-Vector Operator $\sigma$
@@ -366,7 +366,7 @@ h = 6.6 * 1e-34 kgm^2/s1.
 
 $\hbar = \frac{h}{2\pi} = 1.054571726 \dots x 10^{-34} \frac{kgm^2}{s}$ 
 
-In the gen. schrodinger's eqn, lhs has units of 1/time, whereas rhs has units of energy (kgm^2/s^2, because H is hamiltonian). This is wrong. However multiplying lhs by Plank's constant, units are proper. Thus, the correct Generalized schrodinger's equation is $$ \hbar \frac{d \ket{\Psi}}{dt} = -iH\ket{\Psi}$$.
+In the gen. schrodinger's eqn, lhs has units of 1/time, whereas rhs has units of energy (kgm^2/s^2, because H is hamiltonian). This is wrong. However, multiplying lhs by Plank's constant, units are proper. Thus, the correct Generalized schrodinger's equation is $$ \hbar \frac{d \ket{\Psi}}{dt} = -iH\ket{\Psi}$$.
 
 
 
@@ -379,7 +379,7 @@ Try to apply this for state $\ket{r}$ and observable =$\sigma_z$. The arithmetic
 
 #### Effect of the phase factor.
 
-We can multiply the state vectors by a phase factor $e^{i\theta}$ for any $\theta$. This does no make any difference. Although, probability amplitude will change i.e., $\alpha_i \to e^{i\theta} \alpha_i$, the probability does not change, i.e., $\alpha_i^\ast \alpha_i$ remains unchanged. Similarly, the expectation of the observable does not change.
+We can multiply the state vectors by a phase factor $e^{i\theta}$ for any $\theta$. This does not make any difference. Although, probability amplitude will change i.e., $\alpha_i \to e^{i\theta} \alpha_i$, the probability does not change, i.e., $\alpha_i^\ast \alpha_i$ remains unchanged. Similarly, the expectation of the observable does not change.
 
 
 #### Change in the expectation
@@ -420,7 +420,7 @@ $$
     H \ket{E_j} = E_j \ket{E_j}
 $$
 
-These are call time-independent schrodinger's equations.
+These are called time-independent schrodinger's equations.
 
 We can write $\ket{\Psi{(t)}} = \sum_j \alpha_j(t) \ket{E_j}$.
 
@@ -486,7 +486,7 @@ A little bit of algebra shows that this is equivalent to $\braket{\bar{A}^2} = \
 
 From triangle inequality $|x| + |y| \ge |x+y|$, one can derive $2|x||y| \ge |\braket{x|y} + \braket{y|x}|$. (Hint: Square both sides, and expand).
 
-Putting, $x = A\ket\Psi$ and $y = iB\ket\Psi$, we get $\Delta{A} \Delta{B} \ge \frac{1}{2} | \braket{\Psi|[A, B]|\Psi}$. (Hint: Though formula is true in general, it is easy to derive by assuming that $\braket{A} = \braket{B} = 0$, in which case $(\Delta{A})^2 = \braket{A^2}$.
+Putting, $x = A\ket\Psi$ and $y = iB\ket\Psi$, we get $\Delta{A} \Delta{B} \ge \frac{1}{2} | \braket{\Psi|[A, B]|\Psi}$. (Hint: Though formula is true in general, it is easy to derive by assuming that $\braket{A} = \braket{B} = 0$, in which case $(\Delta{A})^2 = \braket{A^2}$.)
 
 
 
@@ -551,7 +551,7 @@ These states are maximally entangled.
 
 The observables in the case of single sping system, still apply in the combined system. They just modify their half. 
 
-E.g. if $\sigma_x$ is observable of spin A, $\sigma_x \ket{ud} = \ket{dd}$.
+e.g., if $\sigma_x$ is observable of spin A, $\sigma_x \ket{ud} = \ket{dd}$.
 
 Note that $\sigma_x$ for single spin system and $\sigma_x$ for combined systems are different operators. This is easy to see in the matrix forms. The two matrices are different. 
 
